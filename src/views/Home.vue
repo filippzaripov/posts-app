@@ -1,18 +1,38 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div>
+
+        <template v-for="post in posts">
+            <Post :post="post"></Post>
+        </template>
+
+    </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+    import Post from "../components/Post";
 
-export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
-}
+    export default {
+        name: 'Home',
+        computed: {
+            posts() {
+                return this.$store.getters.posts
+            },
+            username(){
+                return this.$store.getters.username
+            }
+        },
+        components: {
+            Post
+        }, mounted() {
+            console.log("Home mounted")
+            this.checkLoggedIn();
+        },
+        methods: {
+            checkLoggedIn() {
+                if (!this.username){
+                    this.$router.push('/login')
+                }
+            }
+        }
+    }
 </script>
