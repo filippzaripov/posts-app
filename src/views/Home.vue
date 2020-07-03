@@ -23,15 +23,6 @@
         },
         components: {
             Post
-        }, mounted() {
-            this.checkLoggedIn();
         },
-        methods: {
-            checkLoggedIn() {
-                if (!this.username){
-                    this.$router.push('/login')
-                }
-            }
-        }
     }
 </script>
