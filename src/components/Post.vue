@@ -20,6 +20,7 @@
                                 class="far fa-thumbs-up"></i></button>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

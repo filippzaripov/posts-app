@@ -19,8 +19,6 @@
 
         },
         mounted() {
-
-
             this.checkLoggedIn();
         },
         methods: {

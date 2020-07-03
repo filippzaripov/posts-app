@@ -48,9 +48,9 @@
         }),
         methods: {
             login() {
-                if (!this.posts.length) {
-                    this.$store.dispatch('createPost', mockup);
-                }
+                // if (!this.posts.length) {
+                //     this.$store.dispatch('createPost', mockup);
+                // }
                 this.$store.dispatch('setName', this.username);
                 this.$router.push('/')
             }

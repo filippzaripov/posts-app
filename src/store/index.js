@@ -2,37 +2,35 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 Vue.use(Vuex);
+import mockup from '../assets/mockup.json'
 
 export default new Vuex.Store({
     state: {
-        posts: [
-            // {
-            //     id: "1",
-            //     title: "Title",
-            //     submitDate: "2014-01-01T23:28:56.782Z",
-            //     user: "username",
-            //     votes: 100,
-            //     comments: [
-            //         "first comment",
-            //         "second comment",
-            //         "third one"
-            //     ]
-            // }
-        ],
+        posts:
+            JSON.parse(localStorage.getItem('posts') || "[" + JSON.stringify(mockup) + "]")
+        ,
         name: ''
     },
     mutations: {
         createPost(state, post) {
-            state.posts.push(post)
-            //localStorage.setItem('posts', JSON.stringify(state.posts))
+            state.posts.push(post);
+            localStorage.setItem('posts', JSON.stringify(state.posts))
         },
         updateVotes(state, votes) {
-            const idx = state.posts.findIndex(t => t.id === votes.id)
-            state.posts[idx].votes = votes.updVotes
-            //localStorage.setItem('posts', JSON.stringify(state.posts))
+            const idx = state.posts.findIndex(t => t.id === votes.id);
+            state.posts[idx].votes = votes.updVotes;
+            localStorage.setItem('posts', JSON.stringify(state.posts))
         },
-        setName(state, name){
+        setName(state, name) {
             state.name = name;
+        },
+        setComment(state, comment){
+            const posts = state.posts.concat();
+            const idx = posts.findIndex(t => t.id === comment.postId);
+            posts[idx].comments.push(comment.text);
+
+            state.posts = posts;
+            localStorage.setItem('posts', JSON.stringify(state.posts))
         }
     },
     actions: {
@@ -42,8 +40,11 @@ export default new Vuex.Store({
         updateVotes({commit}, votes) {
             commit('updateVotes', votes)
         },
-        setName({commit}, name){
+        setName({commit}, name) {
             commit('setName', name)
+        },
+        setComment({commit}, comment){
+            commit('setComment', comment)
         }
     },
     getters: {

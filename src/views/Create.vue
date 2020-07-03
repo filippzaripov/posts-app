@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col s6 offset-s3">
             <h1>Create post</h1>
-            <form @submit.prevent="submitHandler" >
+            <form @submit.prevent="submitHandler">
                 <div class="input-field">
                     <input v-model="title" id="title" type="text" class="validate" required>
                     <label for="title">Title</label>
@@ -38,12 +38,13 @@
                     submitDate: new Date(),
                     image: this.image,
                     votes: 0,
-                    user: this.$store.getters.username
+                    user: this.$store.getters.username,
+                    comments: []
                 };
                 this.$store.dispatch('createPost', post);
                 this.$router.push('/')
             },
-            onFileChange(image, e){
+            onFileChange(image, e) {
                 let files = e.target.files || e.dataTransfer.files;
                 if (!files.length)
                     return;
@@ -52,7 +53,7 @@
             createImage(image, file) {
                 const reader = new FileReader();
                 reader.onload = (e) => {
-                   this.image = e.target.result;
+                    this.image = e.target.result;
                 };
                 reader.readAsDataURL(file);
             }
