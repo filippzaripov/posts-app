@@ -33,15 +33,25 @@
 <script>
     import axios from 'axios';
     import swal from 'sweetalert2';
+    import mockup from '../assets/mockup.json'
 
     export default {
         name: 'Auth',
+        computed: {
+            posts() {
+                return this.$store.getters.posts
+            }
+        },
         data: () => ({
             username: '',
+
         }),
         methods: {
             login() {
-                this.$store.dispatch('setName', this.username)
+                if (!this.posts.length) {
+                    this.$store.dispatch('createPost', mockup);
+                }
+                this.$store.dispatch('setName', this.username);
                 this.$router.push('/')
             }
         }
