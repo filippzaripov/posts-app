@@ -20,9 +20,6 @@
                                 class="far fa-thumbs-up"></i></button>
                     </div>
                 </div>
-                <div class="card-action">
-                    <a href="#">This is a link</a>
-                </div>
             </div>
         </div>
     </div>

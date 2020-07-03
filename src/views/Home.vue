@@ -24,7 +24,6 @@
         components: {
             Post
         }, mounted() {
-            console.log("Home mounted")
             this.checkLoggedIn();
         },
         methods: {

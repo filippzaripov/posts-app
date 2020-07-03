@@ -18,12 +18,10 @@
       }
     },
     mounted() {
-      console.log("App mounted")
       this.checkLoggedIn();
     },
     methods: {
       checkLoggedIn() {
-        console.log("Username is " + this.username )
         if (!this.username){
           this.$router.push('/login')
         }
