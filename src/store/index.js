@@ -6,10 +6,8 @@ import mockup from '../assets/mockup.json'
 
 export default new Vuex.Store({
     state: {
-        posts:
-            JSON.parse(localStorage.getItem('posts') || "[" + JSON.stringify(mockup) + "]")
-        ,
-        name: ''
+        posts: JSON.parse(localStorage.getItem('posts') || "[" + JSON.stringify(mockup) + "]"),
+        name: localStorage.getItem('username' || null)
     },
     mutations: {
         createPost(state, post) {
@@ -23,8 +21,9 @@ export default new Vuex.Store({
         },
         setName(state, name) {
             state.name = name;
+            localStorage.setItem('username', name)
         },
-        setComment(state, comment){
+        setComment(state, comment) {
             const posts = state.posts.concat();
             const idx = posts.findIndex(t => t.id === comment.postId);
             posts[idx].comments.push(comment.text);
@@ -43,7 +42,7 @@ export default new Vuex.Store({
         setName({commit}, name) {
             commit('setName', name)
         },
-        setComment({commit}, comment){
+        setComment({commit}, comment) {
             commit('setComment', comment)
         }
     },

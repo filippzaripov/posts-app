@@ -10,7 +10,7 @@
 <!--        </div>-->
         <div class="nav-wrapper ">
 
-            <router-link to="/" class="brand-logo">Posts App</router-link>
+            <router-link to="#" class="brand-logo">Posts App</router-link>
 
             <ul v-if="username" id="nav-mobile" class="right hide-on-med-and-down">
 
