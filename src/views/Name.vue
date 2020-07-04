@@ -3,7 +3,7 @@
         <div class="row">
             <div class="section"></div>
 
-            <div class="container">
+            <div class="col s6 offset-s3">
                 <div class="z-depth-3 x-depth-3 grey green-text lighten-4 row"
                      style="display: inline-block; padding: 0 48px 0 48px; border: 1px; margin-top: 10px; ">
                     <div class="section"></div>
